@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="Pojos.Empleados" table="empleados">
+   <id column="dni" name="dni" type="string"/>
+    <property column="nombre" name="nombre"/>
+    <property column="oficio" name="oficio"/>
+    <property column="direccion" name="direccion"/>
+    <property column="fechaAlta" name="fechaAlta"/>
+    <property column="salario" name="salario"/>
+    <property column="comision" name="comision"/>
+    
+    <!-- Un empleado solo puede estar en un departaemnto -->
+    <many-to-one class="Pojos.Departamentos" name="departamento">
+      <column name="departamento" not-null="true"/>
+    </many-to-one>
+   
+    <one-to-one class="Pojos.Vehiculos" constrained="true"  name="vehiculo"  />
+   
+  </class> 
+</hibernate-mapping>

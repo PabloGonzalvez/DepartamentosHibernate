@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="Pojos.Departamentos" table="departamentos">
+  <id column="nu_dep" name="nu_dep" type="integer"/>
+        <property column="nombre" name="nombre"/>
+        <property column="localidad" name="localidad"/>
+        <set inverse="true" name="empleados" table="empleados">
+            <key>
+                <column name="dni" not-null="true"/>
+            </key>
+            <!-- Un edpartamento tiene varios empleados -->
+            <one-to-many class="Pojos.Empleados"/>
+        </set>
+        
+  </class>    
+</hibernate-mapping>
